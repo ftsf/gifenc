@@ -1,5 +1,4 @@
 {.compile: "gifenc.c".}
-{.deadCodeElim: off.}
 
 type
   GIF* = object
@@ -16,6 +15,6 @@ type
 
 
 proc newGIF*(fname: cstring; width: uint16; height: uint16; palette: ptr uint8;
-             depth: cint; loop: cint): ptr GIF {.importc:"new_gif".}
-proc addFrame*(gif: ptr GIF; delay: uint16) {.importc:"add_frame".}
-proc close*(gif: ptr GIF) {.importc:"close_gif".}
+             depth: cint; loop: cint): ptr GIF {.importc:"new_gif",cdecl.}
+proc addFrame*(gif: ptr GIF; delay: uint16) {.importc:"add_frame",cdecl.}
+proc close*(gif: ptr GIF) {.importc:"close_gif",cdecl.}
